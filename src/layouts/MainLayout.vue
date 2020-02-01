@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Navbar @toggle="isOpen = !isOpen" />
-    <Sidebar v-model="isOpen" />
+    <Navbar v-model="isOpen" />
+    <Header @toggle="isOpen = !isOpen" />
 
     <v-content>
       <v-container class="fill-height" fluid>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Sidebar from "@/components/app/Sidebar";
+import Header from "@/components/app/Header";
 import Navbar from "@/components/app/Navbar";
 
 export default {
@@ -31,7 +31,7 @@ export default {
     isOpen: false
   }),
   components: {
-    Sidebar,
+    Header,
     Navbar
   }
 };
