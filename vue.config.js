@@ -1,3 +1,4 @@
 module.exports = {
-  transpileDependencies: ["vuetify"]
+  transpileDependencies: ["vuetify"],
+  "no-console": process.env.NODE_ENV === "production" ? "error" : "off"
 };

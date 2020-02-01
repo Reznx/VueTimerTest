@@ -1,12 +1,12 @@
 {
-   "timers":[
-      {
-         "name":"First timer",
-         "time":10
-      },
-      {
-         "name":"Second timer",
-         "time":3600
-      }
-   ]
+  "timers": [
+    {
+      "name": "First timer",
+      "time": 10
+    },
+    {
+      "name": "Second timer",
+      "time": 3600
+    }
+  ]
 }

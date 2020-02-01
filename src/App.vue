@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
     <component :is="layout">
-      <router-view />
+      <router-view :loading="loading" />
     </component>
   </v-app>
 </template>
@@ -11,17 +11,19 @@ import MainLayout from "@/layouts/MainLayout";
 import EmptyLayout from "@/layouts/EmptyLayout";
 
 export default {
+  data: () => ({
+    loading: false
+  }),
   computed: {
-    timer() {
-      return this.$store.state.timer;
-    },
     layout() {
       return (this.$route.meta.layout || "empty") + "-layout";
     }
   },
-  mounted() {
+  async mounted() {
     try {
-      this.$store.dispatch("GET_TIMER_DATA");
+      this.loading = true;
+      await this.$store.dispatch("GET_TIMER_DATA");
+      this.loading = false;
     } catch (e) {
       throw e;
     }

@@ -5,23 +5,30 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    timer: null
+    timer: null,
+    warning: null
   },
   mutations: {
     SET_TIMER_DATA(state, json) {
       state.timer = json;
+    },
+    SET_WARNING(state, info) {
+      state.warning = info;
     }
   },
   actions: {
-    GET_TIMER_DATA({ commit }) {
+    async GET_TIMER_DATA({ commit }) {
       try {
-        const response = fetch("/data.json");
-        // const json = response.json();
-        commit("SET_TIMER_DATA", response);
+        const res = await fetch(
+          "http://my-json-server.typicode.com/Reznx/VueTimerTest/db"
+        );
+        const json = await res.json();
+        commit("SET_TIMER_DATA", json);
       } catch (e) {
-        throw e;
+        commit("SET_WARNING", e);
       }
     }
   },
+  getters: {},
   modules: {}
 });
